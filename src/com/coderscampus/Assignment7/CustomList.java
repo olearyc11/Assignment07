@@ -1,8 +1,8 @@
 package com.coderscampus.Assignment7;
 
-public interface CustomList<T> {
-
-    /**
+public interface CustomList<T>  {
+	
+	  /**
 
      * This method should add a new item into the <code>CustomList</code> and should
 
