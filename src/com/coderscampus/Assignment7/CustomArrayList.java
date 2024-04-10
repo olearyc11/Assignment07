@@ -18,9 +18,13 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
+		if (size == items.length) {
+			items = Arrays.copyOf(items, items.length * 2);
+		}
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException("Index out of bounds");
 		}
+		
 		for (int i = size -1; i >= index; i--) {
 			items[i + 1] = items[i];
 		}
@@ -45,5 +49,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 }

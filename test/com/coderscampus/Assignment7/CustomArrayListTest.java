@@ -35,17 +35,28 @@ class CustomArrayListTest {
 		//Arrange
 		CustomList<String> sut = new CustomArrayList<>();
 		//Act
-		sut.add(5, "Colin O'Leary");
-		sut.add(2, "Elon Musk");
-		sut.add(1, "Cristiano Ronaldo");
-		sut.add(3, "Didier Drogba");
-		sut.add(4, "Mike Tyson");
-		sut.add(3, "Bobby Boucher");
+		sut.add(0, "Charles Manson");
+		sut.add(1, "Daphne Phillips");
+		sut.add(2, "Billy Bob");
+		sut.add(3, "Ronald Raegan");
+		sut.add(4, "Nancy Drew");
+		sut.add(3, "Nancy Raegan");
+		sut.add(6, "Mike Tyson");
 		//Assert
-		assertEquals("Didier Drogba", sut.get(4));
-		assertEquals("Mike Tyson", sut.get(5));
-		assertEquals("Bobby Boucher", sut.get(3));
+		assertEquals("Billy Bob", sut.get(2));
+		assertEquals("Ronald Raegan", sut.get(4));
+		assertEquals(7, sut.getSize());
+		assertThrows(IndexOutOfBoundsException.class,() -> sut.add(15, "Bob Evans"));
 	}
+	
+	@Test 
+	void should_return_size_of_array() {
+		//Arrange
+		CustomList<String> sut = new CustomArrayList<>();
+		//Act
+		
+	}
+	
 	
 		
 
