@@ -24,8 +24,6 @@ class CustomArrayListTest {
 		String expectedResult = sut.get(0);
 		Integer expectedSize = sut.getSize();
 		//Assert
-		//What do we expect to happen?
-		//Expect to have a String with the value of "Colin O'Leary" in the first index of my Custom List
 		assertEquals("Colin O'Leary", expectedResult);
 		assertEquals(1, expectedSize);
 	}
@@ -54,6 +52,44 @@ class CustomArrayListTest {
 		//Arrange
 		CustomList<String> sut = new CustomArrayList<>();
 		//Act
+		sut.add(0, "Jeffrey Phillips");
+		sut.add(1, "Karl Listner");
+		sut.add(2, "Berverley Marsh");
+		sut.add(3, "Mikhalyo Mudryk");
+		sut.add(4, "Enzo Fernandez");
+		Integer expectedSize = sut.getSize();
+		//Assert
+		assertEquals(5, expectedSize);
+	}
+	
+	@Test
+	void should_return_size_of_array_2() {
+		CustomList<String> sut = new CustomArrayList<>();
+		
+		sut.add(0, "Trevor Page");
+		sut.add(1, "North Dokota");
+		sut.add(2, "Bugsy Williams");
+		
+		assertEquals(3, sut.getSize());
+	}
+	
+	@Test
+	void should_return_element_based_on_index() {
+		CustomList<String> sut = new CustomArrayList<>();
+
+		sut.add(0, "Michalea Thornton");
+		sut.add(1, "Michelle Branch");
+		sut.add(2, "Johann Sebastian Bach");
+		sut.add(3, "Claude Debussy");
+		sut.add(4, "Phil Foden");
+		
+		assertEquals("Claude Debussy", sut.get(3));
+		assertEquals(sut.get(0), "Michalea Thornton");
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(34));
+	}
+	
+	@Test
+	void should_remove_at_specific_index() {
 		
 	}
 	
