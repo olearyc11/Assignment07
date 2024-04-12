@@ -9,7 +9,7 @@ public class CustomListApplication {
 		CustomList<String> myCustomList = new CustomArrayList<>();
 		
 		
-		myCustomList.add("Colin O'Leary");
+		myCustomList.add("element1");
 		myCustomList.add("element2");
 		myCustomList.add("element3");
 		myCustomList.add("element4");
@@ -40,6 +40,13 @@ public class CustomListApplication {
 		myCustomList.add("element 29");
 		
 		myCustomList.add(0, "Elon Musk");
+		myCustomList.add(15, "Tony Soprano");
+		myCustomList.add(31, "Barry Sanders");
+		
+		myCustomList.remove(15);
+		
+		
+		
 
 		
 		

@@ -6,60 +6,65 @@ import org.junit.jupiter.api.Test;
 
 class CustomArrayListTest {
 
-	// Test-Driven Development Methodology
-		// Step 1: write a failing test
-		// Step 2: write the business logic to make the test pass
-		// Step 3: Refactor your code
-	
-	// Three A's
-		//Arrange, Act, Assert
-	
-	
 	@Test
 	void should_add_one_item_to_list() {
 		//Arrange
 		CustomList<String> sut = new CustomArrayList<>();
 		//Act
 		sut.add("Colin O'Leary");
+		sut.add("Bob Menery");
+		sut.add("Samantha Gordon");
 		String expectedResult = sut.get(0);
 		Integer expectedSize = sut.getSize();
 		//Assert
 		assertEquals("Colin O'Leary", expectedResult);
-		assertEquals(1, expectedSize);
+		assertEquals("Bob Menery", sut.get(1));
+		assertEquals("Samantha Gordon", sut.get(2));
+		assertEquals(3, expectedSize);
 	}
 	
 	@Test 
 	void should_add_item_at_index() {
-		//Arrange
+		
 		CustomList<String> sut = new CustomArrayList<>();
-		//Act
+		
 		sut.add(0, "Charles Manson");
 		sut.add(1, "Daphne Phillips");
 		sut.add(2, "Billy Bob");
 		sut.add(3, "Ronald Raegan");
 		sut.add(4, "Nancy Drew");
+		Integer originalSize = sut.getSize();
 		sut.add(3, "Nancy Raegan");
 		sut.add(6, "Mike Tyson");
-		//Assert
-		assertEquals("Billy Bob", sut.get(2));
-		assertEquals("Ronald Raegan", sut.get(4));
-		assertEquals(7, sut.getSize());
+		sut.add(0, "William Wallace");
+		Integer newSize = sut.getSize();
+		
+		assertEquals(5, originalSize);
+		assertEquals("Billy Bob", sut.get(3));
+		assertEquals("Ronald Raegan", sut.get(5));
+		assertEquals("William Wallace", sut.get(0));
+		assertEquals(8, newSize);
 		assertThrows(IndexOutOfBoundsException.class,() -> sut.add(15, "Bob Evans"));
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.add(9, "Random Name"));
 	}
 	
 	@Test 
 	void should_return_size_of_array() {
-		//Arrange
+		
 		CustomList<String> sut = new CustomArrayList<>();
-		//Act
+		
 		sut.add(0, "Jeffrey Phillips");
 		sut.add(1, "Karl Listner");
 		sut.add(2, "Berverley Marsh");
 		sut.add(3, "Mikhalyo Mudryk");
 		sut.add(4, "Enzo Fernandez");
-		Integer expectedSize = sut.getSize();
-		//Assert
-		assertEquals(5, expectedSize);
+		Integer originalSize = sut.getSize();
+		sut.add(5, "Frank Lamprar");
+		sut.add(0, "Susan Sarandon");
+		Integer newSize = sut.getSize();
+		
+		assertEquals(5, originalSize);
+		assertEquals(7, newSize);
 	}
 	
 	@Test
@@ -82,14 +87,41 @@ class CustomArrayListTest {
 		sut.add(2, "Johann Sebastian Bach");
 		sut.add(3, "Claude Debussy");
 		sut.add(4, "Phil Foden");
+		Integer originalSize = sut.getSize();
+		sut.add(0, "Bob Saget");
+		sut.add(6, "Kevin De Bruyne");
+		sut.add(4, "Dustin Johnson");
+		Integer newSize = sut.getSize();
 		
-		assertEquals("Claude Debussy", sut.get(3));
-		assertEquals(sut.get(0), "Michalea Thornton");
+		assertEquals("Claude Debussy", sut.get(5));
+		assertEquals("Michalea Thornton", sut.get(1));
+		assertEquals(5, originalSize);
+		assertEquals("Kevin De Bruyne", sut.get(7));
+		assertEquals(8, newSize);
 		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(34));
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(8));
+
 	}
 	
 	@Test
 	void should_remove_at_specific_index() {
+		CustomList<String> sut = new CustomArrayList<>();
+
+		sut.add(0, "Michalea Thornton");
+		sut.add(1, "Michelle Branch");
+		sut.add(2, "Johann Sebastian Bach");
+		sut.add(3, "Claude Debussy");
+		sut.add(4, "Phil Foden");
+		Integer originalSize = sut.getSize();
+		sut.remove(2);
+		Integer newSize = sut.getSize();
+		
+		assertEquals(sut.get(2), "Claude Debussy");
+		assertEquals(sut.get(3), "Phil Foden");
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(6));
+		assertEquals(5, originalSize);
+		assertEquals(4, newSize);
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(4));
 		
 	}
 	

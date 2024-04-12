@@ -41,16 +41,26 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
-		if (index < 0 || index > size) {
+		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException("Index out of bounds");
 		}
 		return (T) items[index];
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("Index out of bounds");
+		}
+		T removedItem = (T) items[index];
+		items[index] = null;
+		for (int i = index; i < size - 1; i++) {
+			items[i] = items[i + 1];
+		}
+		items[size-1] = null;
+		size--;
+		return removedItem;
 	}
 	
 	
